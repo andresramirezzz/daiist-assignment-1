@@ -12,8 +12,6 @@ I used the UCI Bank Marketing dataset, taken from the [UCI Machine Learning Repo
 
 ## Business / real-life framing
 
-## Business problem
-
 The model helps a bank's marketing team decide which clients to call first before a campaign. It gives each client a probability of subscribing to a term deposit, which is a savings product where the client keeps money in the bank for a fixed period and receives interest for it. The target is "y", which is "yes" or "no". The model helps to prioritize clients, but it cannot say what each client will do. It is used before the campaign starts, so I do not use "duration" or "campaign" because those values are only known after contacting the client.
 
 The model can make two kinds of errors. A false positive, which is when a client predicted as "yes" whose recorded outcome is "no". The bank makes a call that does not convert into a client, or in other words, a useless call. The other error would be a false negative, which is when a client predicted as "no" and whose recorded outcome is "yes". The bank may lose a possible subscription because they decided not to call. I assume a false positive costs 1 unit and a false negative costs 3 units, because missing a subscription seems worse than making one extra call. These numbers are assumptions made from me, but can be changed in the dashboard according to others criteria. The dataset does not show the real cost of a call or the value of a subscription, thus, I used hypothetical units. The total cost is (false positives × 1) + (false negatives × 3). For this reason, accuracy is not my main metric. I use the validation set to see how the cost changes with different thresholds. The dashboard starts with the same 1:3 assumption, but as said previously, can be changed.
